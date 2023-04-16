@@ -19,7 +19,9 @@ const HeaderCharts: React.FC = () => {
       gutter={[10, 12]}
     >
       <Col>
-        <Title style={{ fontSize: 19, marginBottom: 0 }}>Charts page</Title>
+        <Title style={{ fontSize: 19, marginBottom: 0 }}>
+          Covid cases stats
+        </Title>
       </Col>
       <Col>
         <Row align="middle" gutter={[16, 12]}>

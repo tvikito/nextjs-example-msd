@@ -8,12 +8,19 @@ import { type ReactNode, type FC } from 'react';
 
 const { Text } = Typography;
 
-type Props = { children: ReactNode };
+type Props = {
+  title: string;
+  children: ReactNode;
+  isLoading: boolean;
+  error: Error | undefined;
+};
 
-const ChartWrapper: FC<Props> = ({ children }) => {
+// IDEA move rendering charts to Web Workers
+
+const ChartWrapper: FC<Props> = ({ title, children, isLoading, error }) => {
   return (
     <Card
-      title="Chart title"
+      title={title}
       size="default"
       actions={[
         <Avatar icon={<UserOutlined />} key="avatar" />,
@@ -26,7 +33,7 @@ const ChartWrapper: FC<Props> = ({ children }) => {
         <HeartOutlined key="like" style={{ fontSize: 26 }} />
       ]}
     >
-      {children}
+      {isLoading ? 'Loading...' : error ? error.message : children}
     </Card>
   );
 };

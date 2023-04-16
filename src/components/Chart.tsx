@@ -1,20 +1,23 @@
 import { useEffect, type FC, useRef, useState } from 'react';
 import { type Chart as ChartType } from '@antv/g2';
 import { Row } from 'antd';
-import {
-  type ChartOneDataType,
-  useChartOneData
-} from '~/hooks/useChartOneData';
+import { type CovidData } from '~/hooks/useFetchCovidData';
 
-const ChartOne: FC = () => {
+type Props = {
+  data: CovidData | undefined;
+  renderChart: (
+    container: string | HTMLElement,
+    data: CovidData
+  ) => Promise<ChartType>;
+};
+
+const Chart: FC<Props> = ({ data: chartData, renderChart }) => {
   const chartElement = useRef(null);
   const [chartInstance, setChartInstance] = useState<ChartType>();
 
-  const chartData = useChartOneData();
-
   useEffect(() => {
     const handleRenderChart = async () => {
-      if (chartElement.current) {
+      if (chartElement.current && chartData) {
         if (chartInstance) {
           // destroy previous chart for being replaced by new one with updated data
           chartInstance.destroy();
@@ -29,30 +32,9 @@ const ChartOne: FC = () => {
 
     void handleRenderChart();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [chartData, chartElement]);
 
   return <Row ref={chartElement} />;
 };
 
-const renderChart = async (
-  container: string | HTMLElement,
-  data: ChartOneDataType
-) => {
-  const ChartG2 = (await import('@antv/g2')).Chart;
-
-  const chart = new ChartG2({
-    container,
-    autoFit: true,
-    height: 300
-  });
-
-  chart.data(data);
-
-  chart.interval().position('genre*sold');
-
-  chart.render();
-
-  return chart;
-};
-
-export default ChartOne;
+export default Chart;
