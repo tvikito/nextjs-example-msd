@@ -4,11 +4,13 @@ import {
   UserOutlined
 } from '@ant-design/icons';
 import { Avatar, Card, Row, Typography } from 'antd';
-import { type FC } from 'react';
+import { type ReactNode, type FC } from 'react';
 
 const { Text } = Typography;
 
-const Chart: FC = () => {
+type Props = { children: ReactNode };
+
+const ChartWrapper: FC<Props> = ({ children }) => {
   return (
     <Card
       title="Chart title"
@@ -24,10 +26,9 @@ const Chart: FC = () => {
         <HeartOutlined key="like" style={{ fontSize: 26 }} />
       ]}
     >
-      {/* TODO */}
-      <Row>Chart</Row>
+      {children}
     </Card>
   );
 };
 
-export default Chart;
+export default ChartWrapper;

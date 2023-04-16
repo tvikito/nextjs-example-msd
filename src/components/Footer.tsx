@@ -1,8 +1,7 @@
-import { Layout, Typography } from 'antd';
+import { Layout } from 'antd';
 import { type FC } from 'react';
 
 const { Footer: FooterAnt } = Layout;
-const { Text } = Typography;
 
 const Footer: FC = () => (
   <FooterAnt style={{ textAlign: 'center' }} className="bg-gray">

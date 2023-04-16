@@ -1,7 +1,9 @@
 import { Col, Layout, Row } from 'antd';
 import { type NextPage } from 'next';
 import Head from 'next/head';
-import Chart from '~/components/Chart';
+import ChartOne from '~/components/ChartOne';
+import ChartTwo from '~/components/ChartTwo';
+import ChartWrapper from '~/components/ChartWrapper';
 import HeaderCharts from '~/components/HeaderCharts';
 
 const Home: NextPage = () => {
@@ -15,10 +17,14 @@ const Home: NextPage = () => {
         <HeaderCharts />
         <Row gutter={[24, 16]}>
           <Col span={24} lg={12}>
-            <Chart />
+            <ChartWrapper>
+              <ChartOne />
+            </ChartWrapper>
           </Col>
           <Col span={24} lg={12}>
-            <Chart />
+            <ChartWrapper>
+              <ChartTwo />
+            </ChartWrapper>
           </Col>
         </Row>
       </Layout>
