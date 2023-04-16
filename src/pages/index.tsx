@@ -25,18 +25,22 @@ const Home: NextPage = () => {
               title="New cases in England by Date"
               isLoading={isLoading}
               error={error}
-            >
-              <Chart data={data} renderChart={renderChartNewCasesByDate} />
-            </ChartWrapper>
+              data={data}
+              // chartID would be usually fetch from database, but for simplicity let's use dummy one
+              chartId="1"
+              renderChart={renderChartNewCasesByDate}
+            />
           </Col>
           <Col span={24} lg={12}>
             <ChartWrapper
               title="Comulative cases in UK by Area"
               isLoading={isLoading}
               error={error}
-            >
-              <Chart data={data} renderChart={renderChartNewCasesByArea} />
-            </ChartWrapper>
+              data={data}
+              // chartID would be usually fetch from database, but for simplicity let's use dummy one
+              chartId="2"
+              renderChart={renderChartNewCasesByArea}
+            />
           </Col>
         </Row>
       </Layout>

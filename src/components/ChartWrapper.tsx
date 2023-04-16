@@ -1,23 +1,22 @@
-import {
-  CommentOutlined,
-  HeartOutlined,
-  UserOutlined
-} from '@ant-design/icons';
+import { CommentOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Card, Row, Typography } from 'antd';
-import { type ReactNode, type FC } from 'react';
+import { type FC } from 'react';
+
+import Chart, { type ChartProps } from './Chart';
+import FavoriteChart from './FavoriteChart';
 
 const { Text } = Typography;
 
-type Props = {
+type Props = ChartProps & {
   title: string;
-  children: ReactNode;
+  chartId: string;
   isLoading: boolean;
   error: Error | undefined;
 };
 
 // IDEA move rendering charts to Web Workers
 
-const ChartWrapper: FC<Props> = ({ title, children, isLoading, error }) => {
+const ChartWrapper: FC<Props> = ({ title, chartId, error, ...chartProps }) => {
   return (
     <Card
       title={title}
@@ -30,10 +29,10 @@ const ChartWrapper: FC<Props> = ({ title, children, isLoading, error }) => {
           </Text>{' '}
           <CommentOutlined style={{ fontSize: 26 }} />
         </Row>,
-        <HeartOutlined key="like" style={{ fontSize: 26 }} />
+        <FavoriteChart key="like" chartId={chartId} />
       ]}
     >
-      {isLoading ? 'Loading...' : error ? error.message : children}
+      {error ? error.message : <Chart {...chartProps} />}
     </Card>
   );
 };

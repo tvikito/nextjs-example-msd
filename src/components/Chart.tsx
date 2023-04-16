@@ -3,7 +3,7 @@ import { type Chart as ChartType } from '@antv/g2';
 import { Row } from 'antd';
 import { type CovidData } from '~/hooks/useFetchCovidData';
 
-type Props = {
+export type ChartProps = {
   data: CovidData | undefined;
   renderChart: (
     container: string | HTMLElement,
@@ -11,7 +11,7 @@ type Props = {
   ) => Promise<ChartType>;
 };
 
-const Chart: FC<Props> = ({ data: chartData, renderChart }) => {
+const Chart: FC<ChartProps> = ({ data: chartData, renderChart }) => {
   const chartElement = useRef(null);
   const [chartInstance, setChartInstance] = useState<ChartType>();
 
@@ -32,7 +32,7 @@ const Chart: FC<Props> = ({ data: chartData, renderChart }) => {
 
     void handleRenderChart();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartData, chartElement]);
+  }, [chartData]);
 
   return <Row ref={chartElement} />;
 };
