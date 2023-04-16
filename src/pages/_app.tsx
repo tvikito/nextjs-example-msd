@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { ConfigProvider, Layout } from 'antd';
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
+import { api } from '~/utils/api';
 
 const { Content } = Layout;
 
@@ -38,4 +39,4 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   );
 };
 
-export default MyApp;
+export default api.withTRPC(MyApp);
