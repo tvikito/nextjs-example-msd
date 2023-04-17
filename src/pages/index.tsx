@@ -1,7 +1,6 @@
 import { Col, Layout, Row } from 'antd';
 import { type NextPage } from 'next';
 import Head from 'next/head';
-import Chart from '~/components/Chart';
 import ChartWrapper from '~/components/ChartWrapper';
 import HeaderCharts from '~/components/HeaderCharts';
 import { useFetchCovidData } from '~/hooks/useFetchCovidData';
