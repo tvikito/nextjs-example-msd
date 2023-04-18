@@ -10,7 +10,6 @@ const { Text } = Typography;
 type Props = ChartProps & {
   title: string;
   chartId: string;
-  isLoading: boolean;
   error: Error | undefined;
 };
 

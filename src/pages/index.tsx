@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           <Col span={24} lg={12}>
             <ChartWrapper
               title="New cases in England by Date"
-              isLoading={isLoading}
+              isFetchingChartData={isLoading}
               error={error}
               data={data}
               // chartID would be usually fetch from database, but for simplicity let's use dummy one
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
           <Col span={24} lg={12}>
             <ChartWrapper
               title="Comulative cases in UK by Area"
-              isLoading={isLoading}
+              isFetchingChartData={isLoading}
               error={error}
               data={data}
               // chartID would be usually fetch from database, but for simplicity let's use dummy one
