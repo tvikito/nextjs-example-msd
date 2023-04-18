@@ -1,13 +1,13 @@
-import { initTRPC } from '@trpc/server';
-import superjson from 'superjson';
-import { ZodError } from 'zod';
-import { prisma } from '~/pages/api/db';
+import { initTRPC } from "@trpc/server"
+import superjson from "superjson"
+import { ZodError } from "zod"
+import { prisma } from "~/pages/api/db"
 
 export const createTRPCContext = () => {
   return {
-    prisma
-  };
-};
+    prisma,
+  }
+}
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
@@ -16,13 +16,14 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       ...shape,
       data: {
         ...shape.data,
-        zodError: error.cause instanceof ZodError ? error.cause.flatten() : null
-      }
-    };
-  }
-});
+        zodError:
+          error.cause instanceof ZodError ? error.cause.flatten() : null,
+      },
+    }
+  },
+})
 
-export const createTRPCRouter = t.router;
+export const createTRPCRouter = t.router
 
 // public (unauthenticated) procedure
-export const publicProcedure = t.procedure;
+export const publicProcedure = t.procedure

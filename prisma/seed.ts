@@ -1,31 +1,31 @@
-import { prisma } from '~/pages/api/db';
+import { prisma } from "~/pages/api/db"
 
 async function main() {
-  const ids = ['1', '2'];
+  const ids = ["1", "2"]
 
   return Promise.all(
     ids.map(
       async (id) =>
         await prisma.favoriteChart.upsert({
           where: {
-            id
+            id,
           },
           create: {
             id,
-            isFavorite: false
+            isFavorite: false,
           },
-          update: {}
-        })
-    )
-  );
+          update: {},
+        }),
+    ),
+  )
 }
 
 main()
   .then(async () => {
-    await prisma.$disconnect();
+    await prisma.$disconnect()
   })
   .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit(1)
+  })

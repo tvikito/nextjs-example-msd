@@ -1,14 +1,14 @@
-import { Col, Layout, Row } from 'antd';
-import { type NextPage } from 'next';
-import Head from 'next/head';
-import ChartWrapper from '~/components/ChartWrapper';
-import HeaderCharts from '~/components/HeaderCharts';
-import { useFetchCovidData } from '~/hooks/useFetchCovidData';
-import { renderChartNewCasesByArea } from '~/lib/renderChartNewCasesByArea';
-import { renderChartNewCasesByDate } from '~/lib/renderChartNewCasesByDate';
+import { Col, Layout, Row } from "antd"
+import { type NextPage } from "next"
+import Head from "next/head"
+import ChartWrapper from "~/components/ChartWrapper"
+import HeaderCharts from "~/components/HeaderCharts"
+import { useFetchCovidData } from "~/hooks/useFetchCovidData"
+import { renderChartNewCasesByArea } from "~/lib/renderChartNewCasesByArea"
+import { renderChartNewCasesByDate } from "~/lib/renderChartNewCasesByDate"
 
 const Home: NextPage = () => {
-  const { data, isLoading, error } = useFetchCovidData();
+  const { data, isLoading, error } = useFetchCovidData()
 
   return (
     <>
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
         </Row>
       </Layout>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

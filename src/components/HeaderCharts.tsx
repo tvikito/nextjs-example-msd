@@ -1,15 +1,15 @@
 import {
   AlignLeftOutlined,
   ControlOutlined,
-  DownloadOutlined
-} from '@ant-design/icons';
-import { Badge, Button, Col, Row, Typography } from 'antd';
+  DownloadOutlined,
+} from "@ant-design/icons"
+import { Badge, Button, Col, Row, Typography } from "antd"
 
-const { Title, Text } = Typography;
+const { Title, Text } = Typography
 
 const HeaderCharts: React.FC = () => {
-  const dynamicNotesNumber = 3;
-  const dynamicFilterNumber = 8;
+  const dynamicNotesNumber = 3
+  const dynamicFilterNumber = 8
 
   return (
     <Row
@@ -27,16 +27,16 @@ const HeaderCharts: React.FC = () => {
         <Row align="middle" gutter={[16, 12]}>
           <Col sm={{ flex: 1 }}>
             <Button size="large">
-              Export to PDF <DownloadOutlined style={{ color: '#058473' }} />
+              Export to PDF <DownloadOutlined style={{ color: "#058473" }} />
             </Button>
           </Col>
           <Col sm={{ flex: 1 }}>
             <Button size="large">
-              Notes{' '}
+              Notes{" "}
               <Text type="secondary" style={{ marginLeft: 5 }}>
                 ({dynamicNotesNumber})
-              </Text>{' '}
-              <AlignLeftOutlined style={{ color: '#058473' }} />
+              </Text>{" "}
+              <AlignLeftOutlined style={{ color: "#058473" }} />
             </Button>
           </Col>
           <Col sm={{ flex: 1 }}>
@@ -45,18 +45,18 @@ const HeaderCharts: React.FC = () => {
               <Badge
                 count={dynamicFilterNumber}
                 style={{
-                  backgroundColor: '#058473',
+                  backgroundColor: "#058473",
                   marginLeft: 5,
-                  marginTop: -3
+                  marginTop: -3,
                 }}
               />
-              <ControlOutlined style={{ color: '#058473' }} />
+              <ControlOutlined style={{ color: "#058473" }} />
             </Button>
           </Col>
         </Row>
       </Col>
     </Row>
-  );
-};
+  )
+}
 
-export default HeaderCharts;
+export default HeaderCharts

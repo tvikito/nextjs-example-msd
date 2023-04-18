@@ -1,17 +1,17 @@
-import { CommentOutlined, UserOutlined } from '@ant-design/icons';
-import { Avatar, Card, Row, Typography } from 'antd';
-import { type FC } from 'react';
+import { CommentOutlined, UserOutlined } from "@ant-design/icons"
+import { Avatar, Card, Row, Typography } from "antd"
+import { type FC } from "react"
 
-import Chart, { type ChartProps } from './Chart';
-import FavoriteChart from './FavoriteChart';
+import Chart, { type ChartProps } from "./Chart"
+import FavoriteChart from "./FavoriteChart"
 
-const { Text } = Typography;
+const { Text } = Typography
 
 type Props = ChartProps & {
-  title: string;
-  chartId: string;
-  error: Error | undefined;
-};
+  title: string
+  chartId: string
+  error: Error | undefined
+}
 
 // IDEA move rendering charts to Web Workers
 
@@ -25,15 +25,15 @@ const ChartWrapper: FC<Props> = ({ title, chartId, error, ...chartProps }) => {
         <Row align="middle" key="comments" justify="center">
           <Text style={{ marginRight: 5 }} type="secondary">
             (5)
-          </Text>{' '}
+          </Text>{" "}
           <CommentOutlined style={{ fontSize: 26 }} />
         </Row>,
-        <FavoriteChart key="like" chartId={chartId} />
+        <FavoriteChart key="like" chartId={chartId} />,
       ]}
     >
       {error ? error.message : <Chart {...chartProps} />}
     </Card>
-  );
-};
+  )
+}
 
-export default ChartWrapper;
+export default ChartWrapper

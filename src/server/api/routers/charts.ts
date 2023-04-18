@@ -1,11 +1,11 @@
-import { z } from 'zod';
-import { createTRPCRouter, publicProcedure } from '~/server/api/trpc';
+import { z } from "zod"
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc"
 
 export const chartsRouter = createTRPCRouter({
   isFavorite: publicProcedure
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input: { id } }) => {
-      return ctx.prisma.favoriteChart.findFirst({ where: { id } });
+      return ctx.prisma.favoriteChart.findFirst({ where: { id } })
     }),
 
   setFavorite: publicProcedure
@@ -13,7 +13,7 @@ export const chartsRouter = createTRPCRouter({
     .mutation(({ ctx, input: { id, isFavorite } }) => {
       return ctx.prisma.favoriteChart.update({
         where: { id },
-        data: { isFavorite }
-      });
-    })
-});
+        data: { isFavorite },
+      })
+    }),
+})
